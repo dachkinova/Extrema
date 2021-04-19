@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web site</title>
+    <link rel="stylesheet" href="../style/inventory.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <nav>
+        <a href="../index.html"><img src="../images/extrema.png"></a>
+        <div class="nav-links">
+            <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="html/inventory.html">Adventures</a></li>
+            <li><a href="html/about.html">About</a></li>
+            <li><a href="html/contacts.html">Contact us</a></li>
+            <li><a href="html/cart.html"><img class="cart-image" src="images/shopping-cart.png"></a></li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<body>
+
+    <ul id="elements">
+        <li class="water"><img class="elementIcon" src="../images/water.png">Water</li>
+        <li class="earth"><img class="elementIcon" src="../images/earth.png">Earth</li>
+        <li class="air"><img class="elementIcon" src="../images/air.png">Air</li>
+        <li class="speed"><img class="elementIcon" src="../images/fire.png">Speed</li>
+    </ul>
+    <div class="wrap">
+        <div class="search">
+           <input id="myInput" type="text" class="searchTerm" onkeyup="myFunction()" placeholder="What are you looking for?">
+           <button type="submit" class="searchButton">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+     </div>
+
+    <main id="grid" class="grid">
+        <article class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/air-baloon.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$150</span>
+                            <span id="titleSearch" class="product_name"><b>Hot air balloon</b></span>
+                            <p class="description">One hour flight, with up to four passengers in the basket!</p>
+                            <button class="buttonTitle" type="submit"><span>View more</span></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/skydiving1.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$300</span>
+                            <span id="titleSearch" class="product_name"><b>Tandem skydiving</b></span>
+                            <p class="description">Test your adrenaline with a tandem parachute jump, tied to a licensed
+                                instructor!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/rafting.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$79</span>
+                            <span id="titleSearch" class="product_name"><b>Whitewater rafting</b></span>
+                            <p class="description">Power of the moving water is incredible. Mastering the rapids will
+                                definitely get your heart pumping!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/paraplanner.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$85</span>
+                            <span id="titleSearch" class="product_name"><b>Paragliding flight</b></span>
+                            <p class="description">Glider paragliding - you just have to try it!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/atv.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$195</span>
+                            <span id="titleSearch" class="product_name"><b>Off road adventure with ATV</b></span>
+                            <p class="description">Furious speed, great views and a lot of adrenaline</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/bungee.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$59</span>
+                            <span id="titleSearch" class="product_name"><b>Bungee jumping</b></span>
+                            <p class="description">Choose one of the bungee locations in Bulgaria, take a deep breath
+                                and
+                                jump!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/jet.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$109</span>
+                            <span id="titleSearch" class="product_name"><b>Jet-ski experience</b></span>
+                            <p class="description">Get out and ride! Our 1 & 2 hour tours are fantastic.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/buggy1.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$76</span>
+                            <span id="titleSearch" class="product_name"><b>Off-road buggy tour</b></span>
+                            <p class="description">Our professional guides will teach you in minutes how to drive your
+                                very own 4×4 side by side.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="grid" class="card">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img class="card-image" src="../images/kayaking.jpg" alt="" />
+                    <div class="image_overlay"></div>
+                    <div class="stats">
+                        <div class="stats-container">
+                            <span class="product_price">$80</span>
+                            <span id="titleSearch" class="product_name"><b>Kayaking adventure</b></span>
+                            <p class="description">Run on the rapids or row in calm water!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+</body>
+
+<script>
+    function myFunction() {
+        var input, filter, grid, article, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        grid = document.getElementById("grid");
+        article = grid.getElementsByTagName("article");
+        for (i = 0; i < article.length; i++) {
+            a = article[i].getElementsByClassName("product_name")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                article[i].style.display = "";
+            } else {
+                article[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+
+</html>
