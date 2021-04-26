@@ -175,6 +175,7 @@ div.shadow{
     margin-left:auto;
     margin-right:auto;
     text-align: center;
+    
 }
 
 .description {
@@ -318,11 +319,14 @@ ul#elements {
 }
 ul#elements li {
 	display: inline;
+  font-family: 'Coda Caption', sans-serif;
+  color: rgb(51, 50, 50);
 }
 .elementIcon {
     width: 120px;
     padding-right: 30px;
     filter: sepia(30%);
+    color: rgba(56, 55, 55, 0.932);
 }
 #elements {
     margin-left: 10%;
@@ -330,3 +334,41 @@ ul#elements li {
     margin-bottom: 0%;
 }
 
+.cart-image {
+  width: 35px;
+}
+
+.card {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.product-card:hover .card-image {
+  opacity: 0.6;
+}
+
+.product-card:hover .middle {
+  opacity: 1;
+}
+
+.viewMore {
+  background-color: #6dbbd3;
+  color: white;
+  font-size: 18px;
+  padding: 16px 32px;
+}

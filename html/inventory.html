@@ -10,17 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <nav>
         <a href="../index.html"><img src="../images/extrema.png"></a>
         <div class="nav-links">
             <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="html/inventory.html">Adventures</a></li>
-            <li><a href="html/about.html">About</a></li>
-            <li><a href="html/contacts.html">Contact us</a></li>
-            <li><a href="html/cart.html"><img class="cart-image" src="images/shopping-cart.png"></a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="inventory.html">Adventures</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contacts.html">Contact us</a></li>
+                <li><a href="cart.html"><img class="cart-image" src="../images/shopping-cart.png"></a></li>
             </ul>
         </div>
     </nav>
@@ -36,37 +38,48 @@
     </ul>
     <div class="wrap">
         <div class="search">
-           <input id="myInput" type="text" class="searchTerm" onkeyup="myFunction()" placeholder="What are you looking for?">
-           <button type="submit" class="searchButton">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
+            <input id="myInput" type="text" class="searchTerm" onkeyup="myFunction()"
+                placeholder="What are you looking for?">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
         </div>
-     </div>
+    </div>
 
     <main id="grid" class="grid">
+
         <article class="card">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
-                    <img class="card-image" src="../images/air-baloon.jpg" alt="" />
+                    <a href="../index.html">
+                        <img class="card-image" src="../images/air-baloon.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
                             <span class="product_price">$150</span>
                             <span id="titleSearch" class="product_name"><b>Hot air balloon</b></span>
                             <p class="description">One hour flight, with up to four passengers in the basket!</p>
-                            <button class="buttonTitle" type="submit"><span>View more</span></button>
                         </div>
-
                     </div>
                 </div>
             </div>
         </article>
+
         <article id="grid" class="card">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
-                    <img class="card-image" src="../images/skydiving1.jpg" alt="" />
+                    <a href="../index.html">
+                        <img class="card-image" src="../images/skydiving1.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -83,7 +96,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
-                    <img class="card-image" src="../images/rafting.jpg" alt="" />
+                    <a href="../index.html">
+                        <img class="card-image" src="../images/rafting.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -100,7 +118,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
+                    <a href="../index.html">
                     <img class="card-image" src="../images/paraplanner.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -116,7 +139,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
+                    <a href="../index.html">
                     <img class="card-image" src="../images/atv.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -132,7 +160,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
+                    <a href="../index.html">
                     <img class="card-image" src="../images/bungee.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -150,7 +183,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
+                    <a href="../index.html">
                     <img class="card-image" src="../images/jet.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -166,7 +204,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
+                    <a href="../index.html">
                     <img class="card-image" src="../images/buggy1.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -183,7 +226,12 @@
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
+                    <a href="../index.html">
                     <img class="card-image" src="../images/kayaking.jpg" alt="" />
+                    </a>
+                    <div class="middle">
+                        <div class="viewMore">View more</div>
+                    </div>
                     <div class="image_overlay"></div>
                     <div class="stats">
                         <div class="stats-container">
@@ -216,6 +264,6 @@
             }
         }
     }
-    </script>
+</script>
 
 </html>
