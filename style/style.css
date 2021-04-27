@@ -148,4 +148,18 @@ body, html {
     width: 35px;
 }
 
+.icons {
+  width: 60px;
+}
+
+.icons-set {
+}
+
+.aboutMenu {
+  width: 70%;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: 15%;
+}
+
 

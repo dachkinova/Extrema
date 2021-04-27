@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Extrema - book an adventure</title>
+  <link rel="stylesheet" href="../style/cart.css">
+  <link rel="stylesheet" href="../style/parachute.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <nav>
+    <a href="./index.html"><img class="logo" src="../images/extrema.png"></a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="inventory.html">Adventures</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contacts.html">Contact us</a></li>
+        <li><a href="cart.html"><img class="cart-image" src="../images/shopping-cart.png"></a></li>
+      </ul>
+    </div>
+  </nav>
+</head>
+
+<body>
+
+  <div class="contentBox">
+    <h1>Hot air balloon</h1>
+
+    <div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <img src="../images/Gallery-hotairbaloon3.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="../images/Gallery-hotairbaloon.jpg" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <img src="../images/Gallery-hotairbaloon2.jpg" style="width:100%">
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+    <br>
+
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+
+    <div class="review">
+      <h2 class="titleOpinion">Write your opinion:</h2>
+      <h3 class="ratingTitle">Rating</h3>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+      <br>
+      <div>
+        <input class="textBoxOpinion" type="text"><br>
+      </div>
+      <div class="textBox">
+        <h3>Your name:</h3>
+        <input class="textBoxInfo" type="text"><br>
+      </div>
+      <div class="textBox">
+        <h3>Your email:</h3>
+        <input class="textBoxInfo" type="text"><br>
+      </div>
+      <button type="submit" form="nameform" value="Submit" class="submitButton">Submit</button>
+    </div>
+  </div>
+</body>
+
+</body>
+
+<script>
+ var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+</html>

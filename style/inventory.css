@@ -61,15 +61,15 @@ nav img {
 	height:580px;
 	position:absolute;  
 	overflow:hidden;
-    transform-style: preserve-3d;
-    margin-top: 10px;
-    border: grey;
-
-    /* transition: 2s ease-in;
+  transform-style: preserve-3d;
+  margin-top: 10px;
+  border: rgb(211, 211, 211);
+  
+  transition: 2s ease-in;
 	-webkit-transition:  100ms ease-out; 
        -moz-transition:  100ms ease-out; 
          -o-transition:  100ms ease-out; 
-            transition:  100ms ease-out; */
+            transition:  100ms ease-out;
 }
 
 
