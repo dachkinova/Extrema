@@ -146,3 +146,19 @@ body, html {
 .cart-image {
     width: 35px;
 }
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 500px;
+  width: 845px;
+}
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 500px;
+  width: 845px;
+  margin: auto;
+  padding: 10px;
+  margin-top: 50px;
+}

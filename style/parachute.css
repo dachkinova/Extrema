@@ -320,7 +320,7 @@ font-size: 23px;
 h1 {
   text-align: center;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   font-size: 40px;
 }
 
@@ -354,7 +354,7 @@ h1 {
 
 .bookButton {
   margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 90px;
   background-color: #83c086;
   color: white;
   padding: 10px 20px;
@@ -362,8 +362,7 @@ h1 {
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 30px;
-  width: 40%;
+  width: 70%;
 }
 
 .underDescription {
@@ -372,6 +371,41 @@ h1 {
   text-align: center;
   margin-top: 50px;
   margin-left: 20px;
+}
+
+.subTitle {
+  font-size: 18px;
+  text-align: center;
+  color: #717171;
+  align-content: center;
+  display: flex;
+  margin-bottom: 50px;
+
+}
+
+.center {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+}
+
+.subDescription {
+  max-width: 70%;
+  position: relative;
+  margin-left: 50px;
+  font-size: 18px;
+}
+
+.additionalInfo {
+  margin-top: 50px;
+  margin-bottom: 15px;
+  max-width: 70%;
+  position: relative;
+  margin-left: 50px;
+  font-size: 20px;
+  font-style: oblique;
+  text-decoration: underline;
+
 }
 
 
