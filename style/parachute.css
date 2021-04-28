@@ -156,8 +156,9 @@ font-size: 23px;
   padding: 20px;  
   border: 4px solid rgb(216, 215, 215);
   box-shadow: rgb(139, 138, 138);
-  background-color: rgb(248, 247, 247);
+  background-color: rgb(255, 255, 255);
   border-style: outset;
+  float: left;
 }
 
 *{
@@ -250,7 +251,7 @@ font-size: 23px;
 }
 
 .slideshow-container {
-  max-width: 40%;
+  max-width: 80%;
   position: relative;
   margin-left: 50px;
   margin-top: 50px;
@@ -320,6 +321,57 @@ h1 {
   text-align: center;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-size: 40px;
+}
+
+
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.container {
+  display: flex;
+  background-color: white;
+}
+
+.description  {
+  max-width: 70%;
+  position: relative;
+  margin-left: 50px;
+  font-size: 20px;
+}
+
+.bookButton {
+  margin-left: 50px;
+  margin-top: 50px;
+  background-color: #83c086;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 30px;
+  width: 40%;
+}
+
+.underDescription {
+  max-width: 60%;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 
