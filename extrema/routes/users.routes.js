@@ -9,4 +9,4 @@ module.exports = app => {
     app.get("/profile", users.profile);
 
     app.use('/api/users', router);
-}
+};

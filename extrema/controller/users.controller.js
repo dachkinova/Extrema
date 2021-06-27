@@ -1,12 +1,13 @@
 const db = require('../models');
 const User = db.users;
 const Op = db.Sequelize.Op;
-const bycrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
+
 
 // Retrieve all Tutorials from the database.
 exports.register = (req, res) => {
-    const {username, password, email} = req.body;
-    bycrypt.hash(password, 10).then((hash) => {
+    const {username, password, email} = req.query;
+    bcrypt.hash(password, 10).then((hash) => {
         User.create({
             username: username,
             password: hash,
