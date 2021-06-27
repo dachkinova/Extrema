@@ -207,13 +207,7 @@ div.shadow{
   .text {
     padding: 0 20px 20px;
   }
-  .text > button {
-    background: gray;
-    border: 0;
-    color: white;
-    padding: 10px;
-    width: 100%;
-    }
+  
 
 .card {
     margin-top: 100px;
@@ -221,11 +215,6 @@ div.shadow{
     margin-right: auto;
     margin-left: 50px;
 }    
-button:hover {
-    background-color:rgb(148, 175, 73);
-    color: rgb(0, 0, 0);
-    
-  }
 
 .buttonTitle {
     display: inline-block;
@@ -371,4 +360,14 @@ ul#elements li {
   color: white;
   font-size: 18px;
   padding: 16px 32px;
+}
+
+.showAll {
+  width: 50px;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

@@ -29,13 +29,15 @@
 </head>
 
 <body>
-
+    <div id="myBtnContainer">
     <ul id="elements">
-        <li class="water"><img class="elementIcon" src="../images/water.png">Water</li>
-        <li class="earth"><img class="elementIcon" src="../images/earth.png">Earth</li>
-        <li class="air"><img class="elementIcon" src="../images/air.png">Air</li>
-        <li class="speed"><img class="elementIcon" src="../images/fire.png">Speed</li>
+        <li class="all btn active" onclick="filterSelection('all')"><img class="elementIcon" src="../images/showAll.png">Show all</li>
+        <li class="btn water" onclick="filterSelection('water')"><img class="elementIcon" src="../images/water.png">Water</li>
+        <li class="btn earth" onclick="filterSelection('earth')"><img class="elementIcon" src="../images/earth.png">Earth</li>
+        <li class="btn air" onclick="filterSelection('air')"><img class="elementIcon" src="../images/air.png">Air</li>
+        <li class="btn speed" onclick="filterSelection('speed')"><img class="elementIcon" src="../images/fire.png">Speed</li>
     </ul>
+    </div>
     <div class="wrap">
         <div class="search">
             <input id="myInput" type="text" class="searchTerm" onkeyup="myFunction()"
@@ -47,8 +49,8 @@
     </div>
 
     <main id="grid" class="grid">
-
         <article class="card">
+        <div class="filterDiv air">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
@@ -68,9 +70,10 @@
                     </div>
                 </div>
             </div>
+        </div>
         </article>
 
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv air">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
@@ -92,7 +95,7 @@
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv water">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
@@ -114,12 +117,12 @@
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv air">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
                     <a href="../index.html">
-                    <img class="card-image" src="../images/paraplanner.jpg" alt="" />
+                        <img class="card-image" src="../images/paraplanner.jpg" alt="" />
                     </a>
                     <div class="middle">
                         <div class="viewMore">View more</div>
@@ -135,12 +138,12 @@
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv earth">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
                     <a href="../index.html">
-                    <img class="card-image" src="../images/atv.jpg" alt="" />
+                        <img class="card-image" src="../images/atv.jpg" alt="" />
                     </a>
                     <div class="middle">
                         <div class="viewMore">View more</div>
@@ -156,12 +159,12 @@
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv air">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
                     <a href="../index.html">
-                    <img class="card-image" src="../images/bungee.jpg" alt="" />
+                        <img class="card-image" src="../images/bungee.jpg" alt="" />
                     </a>
                     <div class="middle">
                         <div class="viewMore">View more</div>
@@ -171,20 +174,18 @@
                         <div class="stats-container">
                             <span class="product_price">$59</span>
                             <span id="titleSearch" class="product_name"><b>Bungee jumping</b></span>
-                            <p class="description">Choose one of the bungee locations in Bulgaria, take a deep breath
-                                and
-                                jump!</p>
+                            <p class="description">Choose one of the bungee locations in Bulgaria, take a deep breath and jump!</p>
                         </div>
                     </div>
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv water">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
                     <a href="../index.html">
-                    <img class="card-image" src="../images/jet.jpg" alt="" />
+                        <img class="card-image" src="../images/jet.jpg" alt="" />
                     </a>
                     <div class="middle">
                         <div class="viewMore">View more</div>
@@ -200,12 +201,12 @@
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv earth">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
                     <a href="../index.html">
-                    <img class="card-image" src="../images/buggy1.jpg" alt="" />
+                        <img class="card-image" src="../images/buggy1.jpg" alt="" />
                     </a>
                     <div class="middle">
                         <div class="viewMore">View more</div>
@@ -222,12 +223,12 @@
                 </div>
             </div>
         </article>
-        <article id="grid" class="card">
+        <article id="grid" class="card filterDiv water">
             <div class="product-card">
                 <div class="product-front">
                     <div class="shadow"></div>
                     <a href="../index.html">
-                    <img class="card-image" src="../images/kayaking.jpg" alt="" />
+                        <img class="card-image" src="../images/kayaking.jpg" alt="" />
                     </a>
                     <div class="middle">
                         <div class="viewMore">View more</div>
@@ -263,6 +264,49 @@
                 article[i].style.display = "none";
             }
         }
+    }
+
+    filterSelection("all")
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+    }
+
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+        }
+    }
+
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
     }
 </script>
 

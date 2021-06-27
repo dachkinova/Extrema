@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <nav>
@@ -105,22 +108,27 @@
       </div>
       <br>
       <div>
-        <input class="textBoxOpinion" type="text"><br>
+        <input class="textBoxOpinion" type="text" id="textBoxOpinion"><br>
       </div>
       <div class="textBox">
         <h3>Your name:</h3>
-        <input class="textBoxInfo" type="text"><br>
+        <input class="textBoxInfo" type="text" id="name"><br>
       </div>
       <div class="textBox">
         <h3>Your email:</h3>
-        <input class="textBoxInfo" type="text"><br>
+        <input class="textBoxInfo" type="text" id="email"><br>
       </div>
-      <button type="submit" form="nameform" value="Submit" class="submitButton">Submit</button>
+      <button type="submit" form="nameform" value="Submit" class="submitButton" id="addReview">Submit</button>
     </div>
-  </div>
+  
+
+    <div id="container">
+
+
+    </div>
+</div>
 </body>
 
-</body>
 
 <script>
   var slideIndex = 1;
@@ -149,6 +157,33 @@
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
   }
+
+  function render(data) {
+      var html = "<div class='commentBox'><div class='date'>"+data.name+"</div><div class='content'>"+data.textBoxOpinion+"</div></div>"
+      $('#container').append(html);
+  }
+
+  $(document).ready(function() {
+      var review;
+      for(var i=0; i<review.length; i++) {
+        render(review[i]);
+      }
+
+      $('#addReview').click(function(){
+        var addObj = {
+          "name": $('#name').val(),
+          "textBoxOpinion": $('#textBoxOpinion').val()
+        };
+
+        review.push(addObj);
+        render(addObj);
+        $('#name').val('');
+        $('#date').val('');
+      });
+    });
+
+
+
 </script>
 
 </html>
