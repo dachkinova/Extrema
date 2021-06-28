@@ -262,7 +262,7 @@ div.shadow{
   }
   
   .searchTerm {
-    width: 100%;
+    width: 90%;
     border: 3px solid #00B4CC;
     border-right: none;
     padding: 5px;
@@ -279,7 +279,7 @@ div.shadow{
   }
   
   .searchButton {
-    width: 50px;
+    width: 100px;
     height: 46px;
     border: 1px solid #00B4CC;
     background: #00B4CC;

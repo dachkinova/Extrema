@@ -91,9 +91,10 @@ function                                                                        
         </div>
         <div class="wrap">
             <div class="search">
-                <input id="myInput" type="text" class="searchTerm" onkeyup="myFunction()"
+                <input id="myInput" type="text" class="searchTerm" 
                     placeholder="What are you looking for?"></input>
-                <button type="submit" class="searchButton">
+                <button type="submit" class="searchButton" onClick={myFunction}>
+                    Go
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </div>

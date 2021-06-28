@@ -1,6 +1,8 @@
 import React from 'react';
 import {useHistory} from "react-router-dom";
 import '../styles/style.css';
+import Grid from '@material-ui/core/Grid';
+import shoppingcart from '../images/shopping-cart.png';
 
 const HomeButton = () => {
     let history = useHistory();
@@ -22,4 +24,41 @@ const AdventuresButton = () => {
     )
 }
 
-export {HomeButton, AdventuresButton};
+const LoginButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/login");
+    }
+    return (
+       <li onClick={handleCLick}><a>Login</a></li>
+    )
+}
+
+const RegisterButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/register");
+    }
+    return (
+       <Grid container>
+            <Grid item>
+              <a onClick={handleCLick} href="/register" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </a>
+            </Grid>
+       </Grid>
+    )
+}
+
+const CartButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/cart");
+    }
+    return (
+        <li><a onClick={handleCLick}><img class="cart-image" src={shoppingcart}></img></a></li>
+    )
+}
+
+
+export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton};

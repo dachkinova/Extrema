@@ -4,9 +4,12 @@ import {
     Switch, 
     Route
 } from 'react-router-dom';
-import {HomeButton, AdventuresButton} from './NavButtons';
+import {HomeButton, AdventuresButton, LoginButton, CartButton} from './NavButtons';
 import {Home} from './Home';
 import {Adventures} from './Adventures';
+import {Login} from './Login';
+import {Register} from './Register';
+import {Cart} from './Cart';
 import extrema from '../images/extrema.png';
 import shoppingcart from '../images/shopping-cart.png';
 import { BrowserRouter as Link } from "react-router-dom";
@@ -25,15 +28,18 @@ class Header extends React.Component {
                 <AdventuresButton/>
                 <li><a>About</a></li>
                 <li><a>Contact us</a></li>
-                <li><a><img class="cart-image" src={shoppingcart}></img></a></li>
+                <CartButton/>
+                <LoginButton/>
             </ul>
         </div>
         </nav>
         
-
         <Switch>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/adventures" component={Adventures}></Route>
+            <Route exact path="/login" component={Login}></Route>
+            <Route exact path="/register" component={Register}></Route>
+            <Route exact path="/cart" component={Cart}></Route>
         </Switch>
 
         </Router>
