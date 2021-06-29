@@ -4,7 +4,7 @@ import {
     Switch, 
     Route
 } from 'react-router-dom';
-import {HomeButton, AdventuresButton, LoginButton, CartButton} from './NavButtons';
+import {HomeButton, AdventuresButton, LoginButton, CartButton, ContactsButton} from './NavButtons';
 import {Home} from './Home';
 import {Adventures} from './Adventures';
 import {Login} from './Login';
@@ -13,8 +13,10 @@ import {Cart} from './Cart';
 import extrema from '../images/extrema.png';
 import shoppingcart from '../images/shopping-cart.png';
 import { BrowserRouter as Link } from "react-router-dom";
+import {Contacts} from './Contacts';
 
 class Header extends React.Component {
+    
     render() {
         return (
         <Router>
@@ -27,7 +29,7 @@ class Header extends React.Component {
                 <HomeButton/>
                 <AdventuresButton/>
                 <li><a>About</a></li>
-                <li><a>Contact us</a></li>
+                <ContactsButton/>
                 <CartButton/>
                 <LoginButton/>
             </ul>
@@ -40,6 +42,7 @@ class Header extends React.Component {
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/cart" component={Cart}></Route>
+            <Route exact path="/contacts" component={Contacts}></Route>
         </Switch>
 
         </Router>

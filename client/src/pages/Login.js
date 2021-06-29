@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,6 +20,18 @@ import {
     Route
 } from 'react-router-dom';
 import {RegisterButton} from './NavButtons';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+// const submitValue = () => {
+//   const details = {
+//       'Username' : name,
+//       'Password' : pass
+//   }
+//   console.log(details);
+// }
+
+let textInputUsername = React.createRef();
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%', 
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -42,7 +54,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login() {
+  let history = useHistory();
   const classes = useStyles();
+
+  const [name, setName] = useState('');
+  const [pass, setPass] = useState('');
+  
+  const submitFunc = () => {
+    console.log(name);
+    axios.post('/api/users/login', {
+      username: name, 
+      password: pass
+      }).then(res=> {
+        console.log(res);
+        if(res.status === 200) {
+          history.push("/");
+        }
+    }).catch(e => 
+      console.error(e)
+      );
+  }
+
+  const setPassword = (e) => {
+    setPass(e.target.value);
+  }
+
+  const setUsername = (e) => {
+    setName(e.target.value);
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -56,6 +95,9 @@ export default function Login() {
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
+            onChange={setUsername}
+            ref={textInputUsername}
+            value={name}
             variant="outlined"
             margin="normal"
             required
@@ -67,6 +109,8 @@ export default function Login() {
             autoFocus
           />
           <TextField
+            onChange={setPassword}
+            value={pass}
             variant="outlined"
             margin="normal"
             required
@@ -78,6 +122,7 @@ export default function Login() {
             autoComplete="current-password"
           />
           <Button
+            onClick={submitFunc}
             type="submit"
             fullWidth
             variant="contained"

@@ -24,8 +24,8 @@ exports.register = (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const username = req.query.username;
-  const password = req.query.password;
+  const username = req.body.username;
+  const password = req.body.password;
 
 
   const user = await User.findOne({where: {username: username}});

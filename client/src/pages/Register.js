@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useState}  from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,6 +18,8 @@ import {
     Switch, 
     Route
 } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +44,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
   const classes = useStyles();
+  let history = useHistory();
+
+  const [name, setName] = useState('');
+  const [pass, setPass] = useState('');
+  const [email, setEmail] = useState('');
+
+  const submitFunc = () => {
+    axios.post('/api/users/login', {
+      username: name, 
+      password: pass, 
+      email: email
+    }).then ((res)=> {
+      console.log(res);
+      history.push("/");
+    })
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -55,6 +73,7 @@ export default function Register() {
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
+            onChange={e => setName(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -66,6 +85,7 @@ export default function Register() {
             autoFocus
           />
            <TextField
+            onChange={e => setEmail(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -76,6 +96,7 @@ export default function Register() {
             id="email"
           />
           <TextField
+            onChange={e => setPass(e.target.value)}
             variant="outlined"
             margin="normal"
             required
@@ -87,6 +108,7 @@ export default function Register() {
             autoComplete="current-password"
           />
           <Button
+            onCLick={submitFunc}
             type="submit"
             fullWidth
             variant="contained"

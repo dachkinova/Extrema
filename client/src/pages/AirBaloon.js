@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/inventory.css';
 
-function Adventures() {
+function AirBaloon() {
 
     return (
         <body>
@@ -96,4 +96,4 @@ function Adventures() {
     );
 }
 
-export {Parachute};
+export {AirBaloon};

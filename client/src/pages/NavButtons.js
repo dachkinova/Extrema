@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom";
 import '../styles/style.css';
 import Grid from '@material-ui/core/Grid';
 import shoppingcart from '../images/shopping-cart.png';
+import extrema from '../images/extrema.png';
 
 const HomeButton = () => {
     let history = useHistory();
@@ -60,5 +61,16 @@ const CartButton = () => {
     )
 }
 
+const ContactsButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/contacts");
+    }
+    return (
+       <li onClick={handleCLick}><a>Contact us</a></li>
+    )
+}
 
-export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton};
+
+
+export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton};

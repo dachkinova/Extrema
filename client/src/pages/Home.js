@@ -7,9 +7,16 @@ import returnimage from '../images/return.png';
 import priceicon from '../images/price-icon.png';
 import gift from '../images/gift.png';
 
+import {useHistory} from "react-router-dom";
 
 
 function Home() {
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/adventures`; 
+    history.push(path);
+  }
     return (
     <React.Fragment>
         <div className="hero-image">
@@ -17,7 +24,7 @@ function Home() {
           <h1>The adventures <br/>are waiting for you</h1>
           <p className="subtitle">Conquer your fears</p>
           {/* <form action="html/inventory.html"> */}
-          <button className="buttonTitle" type="submit"><span>Pick an adventure</span></button>
+          <button onClick={routeChange} className="buttonTitle" type="submit"><span>Pick an adventure</span></button>
         {/* </form> */}
         </div>
       </div>
