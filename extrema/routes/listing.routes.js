@@ -6,6 +6,9 @@ module.exports = app => {
     const users = require('../controller/users.controller');
 
     router.get("/:id", authPage(["admin"]), users.findById);
+    
 
     app.use('/api/listings', router);
+
+
 }

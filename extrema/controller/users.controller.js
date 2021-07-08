@@ -6,7 +6,11 @@ const {createTokens, validateToken} = require('../JWT/JWT');
 
 // Retrieve all Tutorials from the database.
 exports.register = (req, res) => {
-    const { username, password, email } = req.query;
+
+    const username = req.body.username;
+    const password = req.body.password;
+    const email = req.body.email;
+
     bcrypt.hash(password, 10).then((hash) => {
         User.create({
             username: username,
@@ -22,6 +26,7 @@ exports.register = (req, res) => {
         });
     });
 };
+
 
 exports.login = async (req, res) => {
   const username = req.body.username;
@@ -49,9 +54,24 @@ exports.login = async (req, res) => {
   });
 };
 
+exports.logout = (req, res) => {
+    res.cookie("access-token", {expires: Date.now()});
+    res.json("Successful log out");
+}
+
 exports.profile = (req, res) => {
-    res.json("Profile");
+    if(req.authenticated && req.id) {
+        User.findOne({where: {id: req.id } }).then(data => {
+            res.send(data);
+        }) 
+        .catch(err => {
+            res.status(500).send({
+                message: err.message
+            });
+        });
+    }
 };
+
 
 exports.findById = (req, res) => {
    const id = req.params.id;

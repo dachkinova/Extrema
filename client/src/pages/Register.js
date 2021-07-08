@@ -48,19 +48,46 @@ export default function Register() {
 
   const [name, setName] = useState('');
   const [pass, setPass] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setMail] = useState('');
 
-  const submitFunc = () => {
-    axios.post('/api/users/login', {
-      username: name, 
-      password: pass, 
-      email: email
-    }).then ((res)=> {
-      console.log(res);
-      history.push("/");
-    })
+  const submitFun = (event) => {
+    event.preventDefault();
+    const enteredName = name;
+    const enteredEmail = email; 
+    const enteredPassword = pass;
+    
+      axios({
+        method: 'post',
+        url: '/api/users/register',
+        data: {
+          username: enteredName, 
+          email: enteredEmail,
+          password: enteredPassword
+         
+        }
+      }).then(res => {
+        if(res.status === 200) {
+          history.push("/");
+        }
+    }).catch(e => 
+      console.error(e)
+      );
+  };
+  
+      
+  const setPassword = (e) => {
+    setPass(e.target.value);
   }
 
+  const setEmail = (e) => {
+    setMail(e.target.value);
+  }
+
+  const setUsername = (e) => {
+    setName(e.target.value);
+  }  
+
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -73,7 +100,7 @@ export default function Register() {
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
-            onChange={e => setName(e.target.value)}
+            onChange={setUsername}
             variant="outlined"
             margin="normal"
             required
@@ -85,7 +112,7 @@ export default function Register() {
             autoFocus
           />
            <TextField
-            onChange={e => setEmail(e.target.value)}
+            onChange={setEmail}
             variant="outlined"
             margin="normal"
             required
@@ -96,7 +123,7 @@ export default function Register() {
             id="email"
           />
           <TextField
-            onChange={e => setPass(e.target.value)}
+            onChange={setPassword}
             variant="outlined"
             margin="normal"
             required
@@ -108,7 +135,7 @@ export default function Register() {
             autoComplete="current-password"
           />
           <Button
-            onCLick={submitFunc}
+            onClick={submitFun}
             type="submit"
             fullWidth
             variant="contained"

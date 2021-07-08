@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, { useEffect, useState } from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -53,27 +53,52 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function Login() {
   let history = useHistory();
   const classes = useStyles();
 
   const [name, setName] = useState('');
   const [pass, setPass] = useState('');
-  
-  const submitFunc = () => {
-    console.log(name);
-    axios.post('/api/users/login', {
-      username: name, 
-      password: pass
-      }).then(res=> {
-        console.log(res);
+
+  const submitHandler = (event) => {
+    
+    event.preventDefault();
+    const enteredName = name;
+    const enteredPassword = pass;
+
+    getUserInfo();
+    
+      axios({
+        method: 'post',
+        url: '/api/users/login',
+        data: {
+          username: enteredName, 
+          password: enteredPassword
+        }
+      }).then(res => {
         if(res.status === 200) {
           history.push("/");
         }
     }).catch(e => 
       console.error(e)
       );
-  }
+      
+  };
+  const [data, setData] = useState();
+  const [loggedIn, setLoggedIn] = useState();
+
+  const getUserInfo = () => {
+    axios.get('/api/users/profile').then((res) => {
+        if(res.data.username) {
+            setData(res.data.username);
+            sessionStorage.setItem('loggedIn', 'true');
+            setLoggedIn(true);
+            sessionStorage.setItem('user', JSON.stringify(res.data));
+        }
+    });
+}
 
   const setPassword = (e) => {
     setPass(e.target.value);
@@ -122,7 +147,7 @@ export default function Login() {
             autoComplete="current-password"
           />
           <Button
-            onClick={submitFunc}
+            onClick={submitHandler}
             type="submit"
             fullWidth
             variant="contained"

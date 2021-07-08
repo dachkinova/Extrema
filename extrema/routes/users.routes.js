@@ -9,6 +9,8 @@ module.exports = app => {
     router.post("/login", users.login);
     
     router.get("/profile", validateToken, users.profile);
-
+    
     app.use('/api/users', router);
+
+
 };

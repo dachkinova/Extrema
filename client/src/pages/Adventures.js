@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/inventory.css';
 import airbaloon from '../images/air-baloon.jpg';
 import skydiving from '../images/skydiving1.jpg';
@@ -14,8 +14,8 @@ import earth from '../images/earth.png';
 import air from '../images/air.png';
 import fire from '../images/fire.png';
 import kayaking from '../images/kayaking.jpg';
-
-
+import {AirBaloonButton} from './NavButtons';
+import { Redirect } from 'react-router-dom';
 
 function                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Adventures() {
 
@@ -66,32 +66,58 @@ function                                                                        
                 }
             }
             element.className = arr1.join(" ");
+        }       
+
+        const handleBtns = (e) => {
+            var x, i;
+            x = document.getElementsByClassName("filterDiv");
+            let grid = document.getElementById("grid");
+            let article = grid.getElementsByTagName("article");
+            console.log(e.target.id);
+            var valueFilter = e.target.id;
+
+                if(valueFilter !== "all"){
+
+            
+                for (i = 0; i < article.length; i++) {
+                        article[i].style.display = "none";
+                }
+
+                let count = 0;
+                if (valueFilter == "all") valueFilter = "";
+                for (i = 0; i < x.length; i++) {
+                    let arrName = x[i].className.split(" ");
+                    console.log(arrName[arrName.length - 1])
+                    if (arrName[arrName.length - 1] === valueFilter) {
+                        article[count].style.display = "";
+                    }
+                    count++;
+                }
+            } else {
+                for (i = 0; i < article.length; i++) {
+                    article[i].style.display = "";
+            }
+            }
+
+            
         }
-    
-        // var btnContainer = document.getElementById("myBtnContainer");
-        // var btns = btnContainer.getElementsByClassName("btn");
-        // for (var i = 0; i < btns.length; i++) {
-        //     btns[i].addEventListener("click", function () {
-        //         var current = document.getElementsByClassName("active");
-        //         current[0].className = current[0].className.replace(" active", "");
-        //         this.className += " active";
-        //     });
-        // }
+        
+
 
     return (
         <body>
         <div id="myBtnContainer">
         <ul id="elements">
-            <li class="all btn active" onclick="filterSelection('all')"><img class="elementIcon" src={showAll}></img>Show all</li>
-            <li class="btn water" onclick="filterSelection('water')"><img class="elementIcon" src={water}></img>Water</li>
-            <li class="btn earth" onclick="filterSelection('earth')"><img class="elementIcon" src={earth}></img>Earth</li>
-            <li class="btn air" onclick="filterSelection('air')"><img class="elementIcon" src={air}></img>Air</li>
-            <li class="btn speed" onclick="filterSelection('speed')"><img class="elementIcon" src={fire}></img>Speed</li>
+        <li class="all btn active"> <img  onClick={handleBtns} id="all" value="all" class="elementIcon" src={showAll}></img>Show all</li>
+            <li class="btn water"><img onClick={handleBtns} id="water" value="water"class="elementIcon" src={water}></img>Water</li>
+            <li class="btn earth"><img onClick={handleBtns} id="earth" value="earth" class="elementIcon" src={earth}></img>Earth</li>
+            <li class="btn air" ><img onClick={handleBtns} id="air" value="air" class="elementIcon" src={air}></img>Air</li>
+            <li class="btn speed"><img onClick={handleBtns} id="speed" value="speed" class="elementIcon" src={fire}></img>Speed</li>
         </ul>
         </div>
         <div class="wrap">
             <div class="search">
-                <input id="myInput" type="text" class="searchTerm" 
+                <input id="myInput" type="text" class="searchTerm"
                     placeholder="What are you looking for?"></input>
                 <button type="submit" class="searchButton" onClick={myFunction}>
                     Go
@@ -102,16 +128,14 @@ function                                                                        
     
         <main id="grid" class="grid">
             <article class="card">
-            <div class="filterDiv air">
+            <div class="filterDiv air" value="air" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
                         <a>
                             <img class="card-image" src={airbaloon} alt="" />
                         </a>
-                        <div class="middle">
-                            <div class="viewMore">View more</div>
-                        </div>
+                        <AirBaloonButton/>
                         <div class="image_overlay"></div>
                         <div class="stats">
                             <div class="stats-container">
@@ -125,7 +149,7 @@ function                                                                        
             </div>
             </article>
     
-            <article id="grid" class="card filterDiv air">
+            <article id="grid" class="card filterDiv air" value="air" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -147,7 +171,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv water">
+            <article id="grid" class="card filterDiv water" value="water" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -169,7 +193,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv air">
+            <article id="grid" class="card filterDiv air" value="air" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -190,7 +214,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv earth">
+            <article id="grid" class="card filterDiv earth" value="earth" handleBtns={handleBtns}> 
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -211,7 +235,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv air">
+            <article id="grid" class="card filterDiv air" value="air" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -232,7 +256,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv water">
+            <article id="grid" class="card filterDiv speed" value="water" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -253,7 +277,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv earth">
+            <article id="grid" class="card filterDiv earth" value="earth" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>
@@ -275,7 +299,7 @@ function                                                                        
                     </div>
                 </div>
             </article>
-            <article id="grid" class="card filterDiv water">
+            <article id="grid" class="card filterDiv water" value="water" handleBtns={handleBtns}>
                 <div class="product-card">
                     <div class="product-front">
                         <div class="shadow"></div>

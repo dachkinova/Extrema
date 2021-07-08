@@ -5,6 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import shoppingcart from '../images/shopping-cart.png';
 import extrema from '../images/extrema.png';
 
+import airbaloon from '../images/air-baloon.jpg';
+import {handleBtns} from './Adventures';
+import '../styles/inventory.css';
+
 const HomeButton = () => {
     let history = useHistory();
     const handleCLick = () => {
@@ -71,6 +75,43 @@ const ContactsButton = () => {
     )
 }
 
+const AirBaloonButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/airbaloon");
+    }
+    return (
+        <div class="middle">
+              <div class="viewMore" onClick={handleCLick}>View more</div>
+        </div>
+    )
+}
+
+const LogoutButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/logout");
+    }
+    return (
+       <li onClick={handleCLick}><a>Log out</a></li>
+    )
+}
+
+const AccountButton = () => {
+    let history = useHistory();
+
+    const handleCLick = () => {
+        if(sessionStorage.getItem('loggedIn') !== 'true') {
+            history.push("/login");
+        } else {
+            history.push("/profile");
+        }
+    }
+        return (
+            <li onClick={handleCLick}> {!sessionStorage.getItem('loggedIn') ? <LoginButton/> : <LogoutButton/>}</li>
+        );
+    
+}
 
 
-export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton};
+export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton, AirBaloonButton, LogoutButton, AccountButton};
