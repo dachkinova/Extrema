@@ -104,16 +104,17 @@
 
 .titleOpinion {
   margin-bottom: 20px;
-
 }
 
 .rate {
   display: inline-block;
+  margin-left: 0px;
 }
 
 .ratingTitle {
   float: left;
   margin-top: 10px;
+  margin-left: 30%;
 }
 
 .textBoxInfo {
@@ -129,6 +130,7 @@
 .review {
   margin-left: 500px;
   margin-top: 50px;
+  width: 80%;
 }
 
 .submitButton {

@@ -22,5 +22,13 @@ db.sequelize = sequelize;
 
 db.users = require('./users')(sequelize, Sequelize);
 db.reviews = require('./reviews')(sequelize, Sequelize);
+db.orders = require('./orders')(sequelize, Sequelize);
+
+db.orders.belongsTo(db.users, {
+  as: 'user',
+  foreignKey: 'user_id'
+});
+
+
 
 module.exports = db;

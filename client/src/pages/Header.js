@@ -11,12 +11,14 @@ import {Adventures} from './Adventures';
 import {Login} from './Login';
 import {Register} from './Register';
 import {Cart} from './Cart';
+import {PaymentPage} from './PaymentPage';
 import { ProductTemplate } from './ProductTemplate';
 import extrema from '../images/extrema.png';
 import { BrowserRouter as Link } from "react-router-dom";
 import {Contacts} from './Contacts';
 import {About} from './About';
 import CartProvider from '../store/CartProvider'
+import { Profile } from './Profile';
 
 class Header extends React.Component {
     
@@ -49,6 +51,8 @@ class Header extends React.Component {
             <Route exact path="/about" component={About}></Route>
             <Route exact path="/contacts" component={Contacts}></Route>
             <Route exact path="/info" component={ProductTemplate}></Route>
+            <Route exact path="/payment" component={PaymentPage}></Route>
+            <Route exact path="/profile" component={Profile}></Route>
             </CartProvider>
         </Switch>
 

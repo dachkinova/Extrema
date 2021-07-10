@@ -13,13 +13,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Register from "./Register"; 
+import Register from "./Register";
 import {
-    BrowserRouter as Router, 
-    Switch, 
-    Route
+  BrowserRouter as Router,
+  Switch,
+  Route
 } from 'react-router-dom';
-import {RegisterButton} from './NavButtons';
+import { RegisterButton } from './NavButtons';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', 
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -56,49 +56,50 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Login() {
+
   let history = useHistory();
   const classes = useStyles();
 
   const [name, setName] = useState('');
   const [pass, setPass] = useState('');
 
+  const [data, setData] = useState();
+  const [loggedIn, setLoggedIn] = useState();
+
   const submitHandler = (event) => {
-    
+
     event.preventDefault();
     const enteredName = name;
     const enteredPassword = pass;
 
-    getUserInfo();
-    
-      axios({
-        method: 'post',
-        url: '/api/users/login',
-        data: {
-          username: enteredName, 
-          password: enteredPassword
-        }
-      }).then(res => {
-        if(res.status === 200) {
-          history.push("/");
-        }
-    }).catch(e => 
+    axios({
+      method: 'post',
+      url: '/api/users/login',
+      data: {
+        username: enteredName,
+        password: enteredPassword
+      }
+    }).then(res => {
+      if (res.status === 200) {
+        console.log(res);
+        sessionStorage.setItem('loggedIn', 'true');
+        history.push('/profile');
+      }
+    }).catch(e =>
       console.error(e)
-      );
-      
+    );
   };
-  const [data, setData] = useState();
-  const [loggedIn, setLoggedIn] = useState();
-
-  const getUserInfo = () => {
-    axios.get('/api/users/profile').then((res) => {
-        if(res.data.username) {
-            setData(res.data.username);
-            sessionStorage.setItem('loggedIn', 'true');
-            setLoggedIn(true);
-            sessionStorage.setItem('user', JSON.stringify(res.data));
-        }
-    });
-}
+  // const getUserInfo = () => {
+  //   axios.get('/api/users/profile').then((res) => {
+  //           setData(res.data);
+  //           sessionStorage.setItem('loggedIn', 'true');
+  //           setLoggedIn(true);
+  //           sessionStorage.setItem('user', JSON.stringify(res.data))
+  //           history.push('/');
+  //       }).catch(e =>
+  //         console.error(e)
+  //       );
+  //     }
 
   const setPassword = (e) => {
     setPass(e.target.value);
@@ -156,7 +157,7 @@ export default function Login() {
           >
             Sign In
           </Button>
-          <RegisterButton/>
+          <RegisterButton />
         </form>
       </div>
       <Box mt={8}>
@@ -165,4 +166,4 @@ export default function Login() {
   );
 }
 
-export {Login};
+export { Login };

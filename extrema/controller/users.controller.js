@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
             maxAge: 60*60*24*30*1000,
             httpOnly: true,
         });
-          res.json("Logged in!");
+          res.json(username);
       }
   });
 };

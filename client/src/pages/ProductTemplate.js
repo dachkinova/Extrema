@@ -7,46 +7,50 @@ import {useLocation} from "react-router-dom";
 function ProductTemplate() {
     const location = useLocation();
     const [params, setParams] = useState(location.state);
-    console.log(params);
-
-    const [slides, setSlides] = useState([]);
-    const [dots, setDots] = useState([]);
-
-    useEffect(() => {
-        let slidstest = document.getElementsByClassName('mySlides');
-        setSlides(slidstest);
-        let dts = document.getElementsByClassName('dot');
-        setDots(dts);
-        showSlides(1);
+    const [slides, setSlides] = useState(document.getElementsByClassName('mySlides'));
+    const [dots, setDots] = useState(document.getElementsByClassName('dot'));
+    const [slideIndex, setSlideIndex] = useState(0);
+    useEffect(()=> {
+        showSlides(slideIndex);
 
     }, []);
-    let slideIndex = 1;
-    showSlides(slideIndex);
   
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
+    const plusSlides = () => {
+      let index = slideIndex + 1;
+      showSlides(index);
+    };
+
+    const minusSlides = () => {
+      let index = slideIndex - 1;
+      showSlides(index);
     };
   
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
+    const currentSlide = (event) => {
+      showSlides(parseInt(event.target.id));
     }
   
-      function showSlides(n) {
-        if(slides.length > 0 && dots.length > 0){
+      const showSlides = (indexToShow) => {
+        if(slides.length > 0){
 
-        
-        let i;
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
+          
+          if(indexToShow < 0){
+            indexToShow = slides.length - 1;
+          }
+          if(indexToShow === slides.length){
+            indexToShow = 0;
+          }
+          setSlideIndex(indexToShow);
+          
+            for (let i = 0; i < slides.length; i++) {
+              if(i === indexToShow){
+                slides[indexToShow].style.display = "block";
+                dots[indexToShow].className += " active";
+              } else {
+                slides[i].style.display = "none";
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+            }
         }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
     }
   
     function render(data) {
@@ -128,15 +132,14 @@ function ProductTemplate() {
                 <img src={params.thirdImage} style={{width:"100%"}}></img>
                 </div>
 
-                <a className="prev" onClick={plusSlides(-1)}>&#10094;</a>
-                <a className="next" onClick={plusSlides(1)}>&#10095;</a>
-
+                <div className="prev" onClick={minusSlides}>&#10094;</div>
+                <div className="next" onClick={plusSlides}>&#10095;</div>
                 </div> <br/>
 
                     <div className="dots">
-                    <span className="dot" onClick={currentSlide(1)}></span>
-                    <span className="dot" onClick={currentSlide(2)}></span>
-                    <span className="dot" onClick={currentSlide(3)}></span>
+                    <span className="dot" id="0" onClick={currentSlide}></span>
+                    <span className="dot" id="1" onClick={currentSlide}></span>
+                    <span className="dot" id="2" onClick={currentSlide}></span>
                     </div>
     
 

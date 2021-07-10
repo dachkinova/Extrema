@@ -12,17 +12,11 @@ function Profile() {
     const [loggedIn, setLoggedIn] = useState();
 
     useEffect(()=> {
-        getUserInfo()
-    })
+        getUserInfo();
+    },[]);
 
 
-    if (loggedIn) {
-        return (
-          <div className="authentication">
-            <LogoutButton/>
-          </div>
-        );
-      }
+    
 
     const getUserInfo = () => {
         axios.get('/api/users/profile').then((res) => {
@@ -52,10 +46,8 @@ function Profile() {
 
     return (
             <React.Fragment>
-                    { !sessionStorage.getItem("loggedIn") ? <LoginButton/> : <LogoutButton/> }
-                    {/* {loggedIn} ? <li onClick={logout}> <LogoutButton/></li> */}
                     <div>{data}</div>
-                    <div>asdasds</div>
+                    <button onClick={logout}>BUTON!!</button>
             </React.Fragment>
     );
 }

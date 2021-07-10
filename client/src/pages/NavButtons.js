@@ -1,13 +1,14 @@
 import React from 'react';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import '../styles/style.css';
 import Grid from '@material-ui/core/Grid';
 import shoppingcart from '../images/shopping-cart.png';
 import extrema from '../images/extrema.png';
 
 import airbaloon from '../images/air-baloon.jpg';
-import {handleBtns} from './Adventures';
+import { handleBtns } from './Adventures';
 import '../styles/inventory.css';
+import axios from 'axios';
 
 const HomeButton = () => {
     let history = useHistory();
@@ -15,7 +16,7 @@ const HomeButton = () => {
         history.push("/");
     }
     return (
-       <li onClick={handleCLick}><a>Home</a></li>
+        <li onClick={handleCLick}><a>Home</a></li>
     )
 }
 
@@ -25,7 +26,7 @@ const AdventuresButton = () => {
         history.push("/adventures");
     }
     return (
-       <li onClick={handleCLick}><a>Adventures</a></li>
+        <li onClick={handleCLick}><a>Adventures</a></li>
     )
 }
 
@@ -35,7 +36,7 @@ const LoginButton = () => {
         history.push("/login");
     }
     return (
-       <li onClick={handleCLick}><a>Login</a></li>
+        <li onClick={handleCLick}><a>Login</a></li>
     )
 }
 
@@ -45,13 +46,13 @@ const RegisterButton = () => {
         history.push("/register");
     }
     return (
-       <Grid container>
+        <Grid container>
             <Grid item>
-              <a onClick={handleCLick} href="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </a>
+                <a onClick={handleCLick} href="/register" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                </a>
             </Grid>
-       </Grid>
+        </Grid>
     )
 }
 
@@ -71,9 +72,9 @@ const AboutButton = () => {
         history.push("/about");
     }
     return (
-       <li onClick={handleCLick}><a>About</a></li>
+        <li onClick={handleCLick}><a>About</a></li>
     )
-    
+
 }
 
 const ContactsButton = () => {
@@ -82,7 +83,7 @@ const ContactsButton = () => {
         history.push("/contacts");
     }
     return (
-       <li onClick={handleCLick}><a>Contact us</a></li>
+        <li onClick={handleCLick}><a>Contact us</a></li>
     )
 }
 
@@ -93,11 +94,11 @@ const InfoRouterButton = (props) => {
         history.push({
             pathname: '/info',
             state: props.props
-          });
+        });
     }
     return (
         <div class="middle">
-              <div class="viewMore" onClick={handleCLick}>View more</div>
+            <div class="viewMore" onClick={handleCLick}>View more</div>
         </div>
     )
 }
@@ -105,10 +106,16 @@ const InfoRouterButton = (props) => {
 const LogoutButton = () => {
     let history = useHistory();
     const handleCLick = () => {
-        history.push("/logout");
+
+        axios.post('api/users/logout').then((res)=>{
+            sessionStorage.setItem('loggedIn', 'false');
+            sessionStorage.removeItem('user');
+        });
+        history.push("/login");
+
     }
     return (
-       <li onClick={handleCLick}><a>Log out</a></li>
+        <li onClick={handleCLick}><a>Log out</a></li>
     )
 }
 
@@ -116,17 +123,28 @@ const AccountButton = () => {
     let history = useHistory();
 
     const handleCLick = () => {
-        if(sessionStorage.getItem('loggedIn') !== 'true') {
+        if (sessionStorage.getItem('loggedIn') !== 'true') {
             history.push("/login");
         } else {
             history.push("/profile");
         }
     }
-        return (
-            <li onClick={handleCLick}> {!sessionStorage.getItem('loggedIn') ? <LoginButton/> : <LogoutButton/>}</li>
-        );
-    
+    return (
+        <li onChange={handleCLick}> {!sessionStorage.getItem('loggedIn') ? <LoginButton /> : <LogoutButton/>}</li>
+    );
+
 }
 
-
-export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton, InfoRouterButton, LogoutButton, AccountButton, AboutButton};
+const PaymentPageButton = (props) => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push({
+            pathname: '/payment',
+            state: props.params
+        });
+    }
+    return (
+        <input className="inputText" type="submit" value="Continue to payment" class="btnCheckOut" onClick={handleCLick}></input>
+    )
+}
+export { HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton, InfoRouterButton, LogoutButton, AccountButton, AboutButton, PaymentPageButton };

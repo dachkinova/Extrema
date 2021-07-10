@@ -2,7 +2,7 @@ const {sign, verify} = require("jsonwebtoken");
 
 
 const createTokens =(user) => {
-    const accessToken = sign({username: user.username, id: user.id},
+    const accessToken = sign({username: user.username, id: user.id, role: user.role},
         "SecretCode3553")
         return accessToken;
 };
@@ -15,10 +15,12 @@ const validateToken = (req, res, next) => {
     }
 
     try {
-        const validToken= verify(accessToken, "SecretCode3553");
+        const validToken = verify(accessToken, "SecretCode3553");
         if(validToken) {
             req.authenticated = true;
-            return next()
+            req.id = validToken.id;
+            req.role = validToken.role;
+            return next();
         }
     } catch(err) {
         return res.status(400).json({error: err});

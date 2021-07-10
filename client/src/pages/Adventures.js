@@ -19,9 +19,14 @@ import { Redirect } from 'react-router-dom';
 import { Cart } from './Cart';
 import CartContext from "../../../client/src/store/cart-context";
 import { InfoRouterButton } from './NavButtons';
-import first from '../images/Gallery-hotairbaloon3.jpg';
-import second from '../images/Gallery-hotairbaloon.jpg';
-import third from '../images/Gallery-hotairbaloon2.jpg';
+
+import firstAirbaloon from '../images/Gallery-hotairbaloon3.jpg';
+import secondAirbaloon from '../images/Gallery-hotairbaloon.jpg';
+import thirdAirbaloon from '../images/Gallery-hotairbaloon2.jpg';
+
+import firstTandem from '../images/skydive.jpg';
+import secondTandem from '../images/skybyron.jpg';
+import thirdTandem from '../images/skydiving.jpg';
 
 const data = [{
     id: 0,
@@ -31,18 +36,19 @@ const data = [{
     price: 150, 
     category: 'air',
     pathname: '/airbaloon',
-    firstImage:  first,
-    secondImage:  second,
-    thirdImage:  third,
+    firstImage:  firstAirbaloon,
+    secondImage:  secondAirbaloon,
+    thirdImage:  thirdAirbaloon,
     subTitle: "Meet the sunrise high in the clouds with your loved ones!" + 
     " Participants in a hot air balloon flight will have the opportunity to" +
     " enjoy the view from a bird's eye view and literally fly where the wind blows them.",
-    underDescription: "Your body tingles. If the wind didn't whistle in your ears, you would hear your own heart."  + 
-    " Adrenaline makes you scream like you've never screamed before. Some people meditate to" + 
-    " silence their minds. You muffle it with a bungee - it's faster." +
-    " After buying a bungee voucher for any location, you must book the exact" +
-    " date of the jump and come to the selected location. You will find the dates" +
-    " of the bungee events in Bulgaria on this page, in the WHERE AND WHEN section.",
+    underDescription: "As you slowly ascend in the skies, the the true beauty of the landscape unveils infront of you."  + 
+    " The adrenaline rush of flying kicks in as you feel the wind blow." + 
+    " As you reach the skies, the adrenaline slowly disperses and serenity sets in." +
+    " You take a deep breath and enjoy the beautiful view infront of you " +
+    " as you travel from location to location. After buying a hot air balloon voucher, you must book the exact" +
+    " date of the trip and come to the take-off site an hour earlier on the selected date. You will find the dates" +
+    " of the hot air balloon events in Bulgaria on this page, in the WHERE AND WHEN section.",
     tourDurartion: "About 8 hours (09:30 - 17:00)",
     included: "Hotel Pick-up & Drop-off, All Entrance Fee, Professional Tour Guide" +
     "(English-Spanish), Transportation by Air-Conditioned Vehicle, Lunch, Tax",
@@ -51,8 +57,6 @@ const data = [{
     group: "Our groups are not crowded and limited to 8-12 people for each tour",
     tourDate: "You can do the full day tour on the same day or different day as the balloon tour"
 
-
-    
 }, {
     id: 1,
     name: "Tandem skydiving",
@@ -60,7 +64,26 @@ const data = [{
     description: "Test your adrenaline with a tandem parachute jump, tied to a licensed instructor!",
     price: 300, 
     category: 'air',
-    pathname: '/skydiving'
+    pathname: '/skydiving',
+    firstImage:  firstTandem,
+    secondImage:  secondTandem,
+    thirdImage:  thirdTandem,
+    subTitle: "Share a deep dive trough the bright blue skies with an instructor in a tandem skydive!" + 
+    " Described by many as the ultimate thrill, tandem skydiving is a form of parachuting where a qualified" +
+    " skydive instructor is connected to you during the freefall jump.",
+    underDescription: "Skydiving feels like flying. Skydiving feels like soaring through the sky as a superhero ready to kick some supervillian butt."  + 
+    " It is scary and yet so satisfying all at the same time. You are looking adventure straight in the eye and getting yourself psyched up." + 
+    " Freefalling at 200km/h, a feeling that has to be experienced atleast once in a lifetime!" +
+    " After buying a skydiving voucher, you must book the exact" +
+    " date of the skydive and come to our office at 7:20am. You will find the dates" +
+    " of the skydives in Bulgaria on this page, in the WHERE AND WHEN section.",
+    tourDurartion: "About 5 hours (07:30 - 12:30)",
+    included: "Transport to the airfield & back, Skydiving equipment, Skydiving instructor," +
+    " Lunch in our local restaurant, GoPro footage of your dive!",
+    program: "Departure from our office at 07:30am. Arrival at airfield 8:00am. Mandatory safety training. Take-off 8:45am. Viewing of the landscape. Skydive at 10:30am. Arival at restaurant 12:30am.",
+    lunch: "Two course meal consisting of a main course and dessert. You can choose to stick to a standard fare or select whatever the menu offers that you enjoy. ",
+    group: "Our aircraft can fit 4 adventurers and their instructors at a time.",
+    tourDate: "Every Wednesday and Friday from June 1st to September 10th!"
 }, {
     id: 2,
     name: "Whitewater rafting",

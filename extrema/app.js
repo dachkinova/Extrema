@@ -19,6 +19,8 @@ app.use(bodyParser());
 var users = require('./routes/users.routes')(app);
 var listings = require('./routes/listing.routes')(app);
 var reviews = require('./routes/reviews.routes')(app);
+var orders = require('./routes/orders.routes')(app);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

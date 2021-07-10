@@ -1,11 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useStyles, useState } from 'react';
 import CartContext from "../../../client/src/store/cart-context";
 import '../styles/cart.css';
+import {useLocation} from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import {
+    BrowserRouter as Router, 
+    Switch, 
+    Route
+} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
+function PaymentPage() {
 
-function Cart() {
-
-
+  const location = useLocation();
+  const [params, setParams] = useState(location.state);
   const cartCtx = useContext(CartContext);
   const cartItems = cartCtx.items;
 
@@ -20,13 +29,62 @@ function Cart() {
   //   });
   // };
 
+  let history = useHistory();
+
+  const [fullname, setFullName] = useState('');
+  const [email, setMail] = useState('');
+  const [address, setAddr] = useState('');
+  const [city, setCityName] = useState('');
+
+  const submitFun = (event) => {
+    event.preventDefault();
+    const enteredFullName = fullname;
+    const enteredEmail = email; 
+    const enteredAddress = address;
+    const enteredCity = city;
+    
+      axios({
+        method: 'post',
+        url: '/api/order/makeOrder',
+        data: {
+          enteredFullName: enteredFullName, 
+          enteredEmail: enteredEmail,
+          enteredAddress: enteredAddress,
+          enteredCity: enteredCity,
+          adventure: params
+         
+        }
+      }).then(res => {
+        if(res.status === 200) {
+          history.push("/");
+        }
+    }).catch(e => 
+      console.error(e)
+      );
+  };
+  
+      
+  const setFName = (e) => {
+    setFullName(e.target.value);
+  }
+
+  const setEmail = (e) => {
+    setMail(e.target.value);
+  }
+
+  const setAddress = (e) => {
+    setAddr(e.target.value);
+  }
+
+  const setCity = (e) => {
+    setCityName(e.target.value);
+  }
+
   return (
 
     <React.Fragment>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-      <h1>Your cart</h1>
-      <div class="row">
-      </div>
+      <h1>Your cart</h1><br/>
       <div class="col-25">
         <div class="col-75">
           <div class="containerPayment">
@@ -36,24 +94,14 @@ function Cart() {
                 <div class="col-50">
                   <h3>Billing Address</h3>
                   <label className="label1" for="fname"><i class="fa fa-user"></i> Full Name</label>
-                  <input className="textInput"  type="text" id="fname" name="firstname" placeholder="John M. Doe"></input>
+                  <input className="textInput"  type="text" id="fname" name="firstname" onChange={setFName}></input>
                   <label className="label1" for="email"><i class="fa fa-envelope"></i> Email</label >
-                  <input className="textInput"  type="text" id="email" name="email" placeholder="john@example.com"></input>
+                  <input className="textInput"  type="text" id="email" name="email" onChange={setEmail}></input>
                   <label className="label1" for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                  <input className="textInput"  type="text" id="adr" name="address" placeholder="542 W. 15th Street"></input>
+                  <input className="textInput"  type="text" id="adr" name="address" onChange={setAddress}></input>
                   <label className="label1" for="city"><i class="fa fa-institution"></i> City</label>
-                  <input className="textInput"  type="text" id="city" name="city" placeholder="New York"></input>
+                  <input className="textInput"  type="text" id="city" name="city" onChange={setCity}></input>
 
-                  <div class="row">
-                    <div class="col-50">
-                      <label className="label1" for="state">State</label>
-                      <input className="textInput"  type="text" id="state" name="state" placeholder="NY"></input>
-                    </div>
-                    <div class="col-50">
-                      <label className="label1" for="zip">Zip</label>
-                      <input className="textInput"  type="text" id="zip" name="zip" placeholder="10001"></input>
-                    </div>
-                  </div>
                 </div>
 
                 <div class="col-50">
@@ -66,27 +114,12 @@ function Cart() {
                     <i class="fa fa-cc-discover" style={{ color: "orange" }}></i>
                   </div>
                   <label className="label1" for="cname">Name on Card</label>
-                  <input className="textInput"  type="text" id="cname" name="cardname" placeholder="John More Doe"></input>
+                  <input className="textInput"  type="text" id="cname" name="cardname"></input>
                   <label className="label1" for="ccnum">Credit card number</label>
-                  <input className="textInput"  type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"></input>
-                  <label className="label1" for="expmonth">Exp Month</label>
-                  <input className="textInput"  type="text" id="expmonth" name="expmonth" placeholder="September"></input>
-                  <div class="row">
-                    <div class="col-50">
-                      <label className="label1" for="expyear">Exp Year</label>
-                      <input className="textInput"  type="text" id="expyear" name="expyear" placeholder="2018"></input>
-                    </div>
-                    <div class="col-50">
-                      <label className="label1" for="cvv">CVV</label>
-                      <input className="textInput"  type="text" id="cvv" name="cvv" placeholder="352"></input>
-                    </div>
-                  </div>
+                  <input className="textInput"  type="text" id="ccnum" name="cardnumber"></input>
                 </div>
               </div>
-              <label className="label1" className="label1">
-                <input className="textInput"  type="checkbox" checked="checked" name="sameadr"></input> Shipping address same as billing
-              </label>
-              <input className="textInput"  type="submit" value="Continue to checkout" class="btnCheckOut"></input>
+              <input className="textInput"  type="submit" value="Make order" class="btnCheckOut" onClick={submitFun}></input>
             </form>
           </div>
         </div>
@@ -94,4 +127,4 @@ function Cart() {
     </React.Fragment>
   );
 }
-export { Cart };
+export { PaymentPage };
