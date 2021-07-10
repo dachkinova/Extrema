@@ -5,18 +5,18 @@ import {
     Switch, 
     Route
 } from 'react-router-dom';
-import {HomeButton, AdventuresButton, LoginButton, CartButton, ContactsButton, LogoutButton, AccountButton} from './NavButtons';
+import {HomeButton, AdventuresButton, LoginButton, CartButton, ContactsButton, LogoutButton, AccountButton, AboutButton} from './NavButtons';
 import {Home} from './Home';
 import {Adventures} from './Adventures';
 import {Login} from './Login';
 import {Register} from './Register';
 import {Cart} from './Cart';
-import { AirBaloon } from './AirBaloon';
+import { ProductTemplate } from './ProductTemplate';
 import extrema from '../images/extrema.png';
-import shoppingcart from '../images/shopping-cart.png';
 import { BrowserRouter as Link } from "react-router-dom";
 import {Contacts} from './Contacts';
-import {Profile} from './Profile';
+import {About} from './About';
+import CartProvider from '../store/CartProvider'
 
 class Header extends React.Component {
     
@@ -31,7 +31,7 @@ class Header extends React.Component {
             <ul>
                 <li><HomeButton/></li>
                 <li><AdventuresButton/></li>
-                <li><a>About</a></li>
+                <li><AboutButton/></li>
                 <li><ContactsButton/></li>
                 <li><CartButton/></li>
                 <li><AccountButton/></li>
@@ -40,13 +40,16 @@ class Header extends React.Component {
         </nav>
         
         <Switch>
+     <CartProvider>
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/adventures" component={Adventures}></Route>
             <Route exact path="/login" component={Login}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/cart" component={Cart}></Route>
+            <Route exact path="/about" component={About}></Route>
             <Route exact path="/contacts" component={Contacts}></Route>
-            <Route exact path="/airbaloon" component={AirBaloon}></Route>
+            <Route exact path="/info" component={ProductTemplate}></Route>
+            </CartProvider>
         </Switch>
 
         </Router>

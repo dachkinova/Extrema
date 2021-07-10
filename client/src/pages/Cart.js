@@ -1,84 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CartContext from "../../../client/src/store/cart-context";
+import '../styles/cart.css';
+
 
 function Cart() {
-  
-    return (
-      <React.Fragment>
-      <h1>Shopping Cart</h1>
 
-    <div class="shopping-cart">
 
-      <div class="column-labels">
-        <label class="product-image">Image</label>
-        <label class="product-details">Product</label>
-        <label class="product-price">Price</label>
-        <label class="product-quantity">Quantity</label>
-        <label class="product-removal">Remove</label>
-        <label class="product-line-price">Total</label>
+  const cartCtx = useContext(CartContext);
+  const cartItems = cartCtx.items;
+
+
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
+
+  // const onRemove = () => {
+  //   cartItems && cartItems.map((item) => {
+  //     cartItemRemoveHandler.bind(null, item.id);
+  //   });
+  // };
+
+  return (
+
+    <React.Fragment>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+      <h1>Your cart</h1>
+      <div class="row">
+
+
+        <div class="containerCart">
+          <h4>Cart <span class="price" style={{ color: "black" }}><i class="fa fa-shopping-cart"></i> <b className="counter"></b></span></h4>
+          {cartItems && cartItems.map((item) => {
+            return (
+              <p><a href="#">{item.title}</a> <span class="price">{item.price}</span></p>
+            )
+          })}
+          <hr />
+          <p>Total <span class="price" style={{ color: "black" }}><b className="sum"></b></span></p>
+        </div>
+
+        <input className="buttonPayment inputText"  type="submit" value="Continue to payment" class="btnCheckOut"></input>
+
+
       </div>
-
-      <div class="product">
-        <div class="product-image">
-          <img></img>
-        </div>
-        <div class="product-details">
-          <div class="product-title">Dingo Dog Bones</div>
-        </div>
-        <div class="product-price">12.99</div>
-        <div class="product-quantity">
-          <input type="number" value="2" min="1"></input>
-        </div>
-        <div class="product-removal">
-          <button class="remove-product">
-            Remove
-          </button>
-        </div>
-        <div class="product-line-price">25.98</div>
-      </div>
-
-      <div class="product">
-        <div class="product-image">
-          <img></img>
-        </div>
-        <div class="product-details">
-          <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-        </div>
-        <div class="product-price">45.99</div>
-        <div class="product-quantity">
-          <input type="number" value="1" min="1"></input>
-        </div>
-        <div class="product-removal">
-          <button class="remove-product">
-            Remove
-          </button>
-        </div>
-        <div class="product-line-price">45.99</div>
-      </div>
-
-      <div class="totals">
-        <div class="totals-item">
-          <label>Subtotal</label>
-          <div class="totals-value" id="cart-subtotal">71.97</div>
-        </div>
-        <div class="totals-item">
-          <label>Tax (5%)</label>
-          <div class="totals-value" id="cart-tax">3.60</div>
-        </div>
-        <div class="totals-item">
-          <label>Shipping</label>
-          <div class="totals-value" id="cart-shipping">15.00</div>
-        </div>
-        <div class="totals-item totals-item-total">
-          <label>Grand Total</label>
-          <div class="totals-value" id="cart-total">90.57</div>
-        </div>
-      </div>
-          
-          <button class="checkout">Checkout</button>
-
-    </div>
+      
     </React.Fragment>
-      );
-    }
-
-export {Cart};
+  );
+}
+export { Cart };

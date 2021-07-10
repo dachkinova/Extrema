@@ -3,7 +3,6 @@ module.exports = (sequelize, Sequelize) => {
         content: {
             field: "content",
             type: Sequelize.STRING
-           
         },
         name: {
             field: "name",
@@ -12,7 +11,12 @@ module.exports = (sequelize, Sequelize) => {
         email: {
             field: "email",
             type: Sequelize.STRING
+        },
+        rating: {
+            field: "rating",
+            type: Sequelize.STRING
         }
+
     }, {
         timestamps: false
     });

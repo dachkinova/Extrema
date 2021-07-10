@@ -1,197 +1,111 @@
-
-.group:before,
-.group:after {
-    content: '';
-    display: table;
-} 
-.group:after {
-    clear: both;
-}
-.group {
-    zoom: 1;
+.row {
+  display: -ms-flexbox; /* IE10 */
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
 }
 
-
-/* Apply dollar signs */
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
-  content: '$';
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
 }
 
-
-/* Body/Header stuff */
-body {
-  padding: 0px 30px 30px 20px;
-  font-family: font-default;
-  font-weight: 100;
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
 }
 
-h1 {
-  font-weight: 100;
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
 }
 
-label {
-  color: color-label;
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+.containerCart {
+  background-color: #fffdfd;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  width: 50%;
+  margin-left: 10%;
+  margin-top: 5%;
 }
 
-.shopping-cart {
-  margin-top: -45px;
+.productItem {
+  margin-top: 10px;
+}
+.containerPayment {
+  background-color: #fffdfd;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  width: 50%;
+  margin-left: 10%;
+  margin-top: 5%;
 }
 
-
-/* Column headers */
-.column-labels label {
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid color-border;
-  }
-  
-  .product-image, .product-details, .product-removal {
-    text-indent: -9999px;
-  }
-
-
-
-/* Product entries */
-.product {
+.textInput {
+  width: 100%;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid color-border;
-}
-  .product-image {
-    text-align: center;
-  }
-  img {
-    width: 100px;
-  }
-  
-  .product-details  .product-title {
-      margin-right: 20px;
-      font-family: font-bold;
-    }
-    .product-description {
-      margin: 5px 20px 5px 0;
-      line-height: 1.4em;
-  }
-  
-  .product-quantity input {
-      width: 40px;
-  }
-  
-  .remove-product {
-    border: 0;
-    padding: 4px 8px;
-    background-color: #c66;
-    color: #fff;
-    font-family: font-bold;
-    font-size: 12px;
-    border-radius: 3px;
-  }
-  .remove-product:hover {
-    background-color: #a44;
-  }
-
-
-/* Totals section */
-.totals .totals-item {
-    float: right;
-    clear: both;
-    width: 100%;
-    margin-bottom: 10px;
-}
-    label {
-      float: left;
-      clear: both;
-      width: 79%;
-      text-align: right;
-    }
-    
-    .totals-value {
-      float: right;
-      width: 21%;
-      text-align: right;
-    }
-
-  
-  .totals-item-total {
-    font-family: font-bold;
-  }
-
-
-.checkout {
-  float: right;
-  border: 0;
-  margin-top: 20px;
-  padding: 6px 25px;
-  background-color: #6b6;
-  color: #fff;
-  font-size: 25px;
+  padding: 12px;
+  border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-.checkout:hover {
-  background-color: #494;
+.label1 {
+  margin-bottom: 10px;
+  display: block;
 }
 
-/* Make adjustments for tablet */
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
 
-  
-  .shopping-cart {
-    margin: 0;
-    padding-top: 20px;
-    border-top: 1px solid color-border;
-  }
-  
-  .column-labels {
-    display: none;
-  }
-  
-  .product-image img {
-    float: right;
-    width: auto;
-      margin: 0 0 10px 10px;
-  }
-  
-  .product-details {
-    float: none;
-    margin-bottom: 10px;
-    width: auto;
-  }
-  
-  .product-price {
-    clear: both;
-    width: 70px;
-  }
-  
-  .product-quantity input {
-    width: 100px;
-      margin-left: 20px;
-    }
-  
-  .product-quantity:before {
-    content: 'x';
-  }
-  
-  .product-removal {
-    width: auto;
-  }
-  
-  .product-line-price {
-    float: right;
-    width: 70px;
-  }
+.btnCheckOut {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 50px 0;
+  border: none;
+  width: 200px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
 
+.btnCheckOut:hover {
+  background-color: #45a049;
+}
 
-/* Make more adjustments for phone */
-@media screen and (max-width: 350px) {
-  
-  .product-removal {
-    float: right;
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+.buttonPayment {
+  width: 200px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
   }
-  
-  .product-line-price {
-    float: right;
-    clear: left;
-    width: auto;
-    margin-top: 10px;
+  .col-25 {
+    margin-bottom: 20px;
   }
 }

@@ -8,11 +8,14 @@ exports.review = (req, res) => {
     let contentInput = req.body.content;
     let nameInput = req.body.name;
     let emailInput = req.body.email;
+    let ratingInput = req.body.rating;
 
         Review.create({
             content: contentInput,
             name: nameInput,
-            email: emailInput
+            email: emailInput,
+            rating: ratingInput 
+
         }).then((res) => {
             
             res.json("Successfull review added!");

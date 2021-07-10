@@ -65,6 +65,17 @@ const CartButton = () => {
     )
 }
 
+const AboutButton = () => {
+    let history = useHistory();
+    const handleCLick = () => {
+        history.push("/about");
+    }
+    return (
+       <li onClick={handleCLick}><a>About</a></li>
+    )
+    
+}
+
 const ContactsButton = () => {
     let history = useHistory();
     const handleCLick = () => {
@@ -75,10 +86,14 @@ const ContactsButton = () => {
     )
 }
 
-const AirBaloonButton = () => {
+const InfoRouterButton = (props) => {
     let history = useHistory();
+    console.log(props);
     const handleCLick = () => {
-        history.push("/airbaloon");
+        history.push({
+            pathname: '/info',
+            state: props.props
+          });
     }
     return (
         <div class="middle">
@@ -114,4 +129,4 @@ const AccountButton = () => {
 }
 
 
-export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton, AirBaloonButton, LogoutButton, AccountButton};
+export {HomeButton, AdventuresButton, LoginButton, RegisterButton, CartButton, ContactsButton, InfoRouterButton, LogoutButton, AccountButton, AboutButton};

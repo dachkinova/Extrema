@@ -14,7 +14,7 @@ function Contacts() {
         <div class="mapouter">
           <div class="gmap_canvas"><iframe width="845" height="500" id="gmap_canvas"
               src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=11&ie=UTF8&iwloc=&output=embed"
-              frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+              frameborder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe><a
               href="https://youtube-embed-code.com"></a><br/>
             <a href="https://www.embedgooglemap.net"></a>
           </div>

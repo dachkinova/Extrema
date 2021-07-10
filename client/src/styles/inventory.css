@@ -368,6 +368,18 @@ ul#elements li {
 
 .btn {
   border: none;
+  cursor: pointer;
+}
+
+.buttonAddToCart {
+  background-color: #a3cdda;
+  color: white;
+  font-size: 15px;
+  padding: 10px 15px;
+  margin-right: 0px;
+  border: none;
   outline: none;
   cursor: pointer;
+  margin-left: 160px;
+  margin-top: 8px;
 }
