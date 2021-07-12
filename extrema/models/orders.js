@@ -6,10 +6,14 @@ module.exports = (sequelize, Sequelize) => {
         },
         product_name: {
             field: "product_name",
-            type: Sequelize.STRING
+            type: Sequelize.ABSTRACT
         },
         quantity: {
             field: "quantity",
+            type: Sequelize.STRING
+        },
+        full_name: {
+            field: "full_name",
             type: Sequelize.STRING
         },
         email: {

@@ -1,12 +1,12 @@
 import React, { useContext, useStyles, useState } from 'react';
 import CartContext from "../../../client/src/store/cart-context";
 import '../styles/cart.css';
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    BrowserRouter as Router, 
-    Switch, 
-    Route
+  BrowserRouter as Router,
+  Switch,
+  Route
 } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -39,31 +39,33 @@ function PaymentPage() {
   const submitFun = (event) => {
     event.preventDefault();
     const enteredFullName = fullname;
-    const enteredEmail = email; 
+    const enteredEmail = email;
     const enteredAddress = address;
     const enteredCity = city;
-    
-      axios({
-        method: 'post',
-        url: '/api/order/makeOrder',
-        data: {
-          enteredFullName: enteredFullName, 
-          enteredEmail: enteredEmail,
-          enteredAddress: enteredAddress,
-          enteredCity: enteredCity,
-          adventure: params
-         
-        }
-      }).then(res => {
-        if(res.status === 200) {
-          history.push("/");
-        }
-    }).catch(e => 
+
+    axios({
+      method: 'post',
+      url: '/api/order/makeOrder',
+      data: {
+        enteredFullName: enteredFullName,
+        enteredEmail: enteredEmail,
+        enteredAddress: enteredAddress,
+        enteredCity: enteredCity,
+        adventure: params
+      }
+    }).then((res) => {
+      if (res.status === 200) {
+        alert("Your order has been successfully placed!")
+        history.push("/");
+      }
+    }).catch(e =>
       console.error(e)
-      );
+    );
+
+
   };
-  
-      
+
+
   const setFName = (e) => {
     setFullName(e.target.value);
   }
@@ -84,7 +86,7 @@ function PaymentPage() {
 
     <React.Fragment>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-      <h1>Your cart</h1><br/>
+      <h1>Your cart</h1><br />
       <div class="col-25">
         <div class="col-75">
           <div class="containerPayment">
@@ -94,13 +96,13 @@ function PaymentPage() {
                 <div class="col-50">
                   <h3>Billing Address</h3>
                   <label className="label1" for="fname"><i class="fa fa-user"></i> Full Name</label>
-                  <input className="textInput"  type="text" id="fname" name="firstname" onChange={setFName}></input>
+                  <input className="textInput" type="text" id="fname" name="firstname" onChange={setFName}></input>
                   <label className="label1" for="email"><i class="fa fa-envelope"></i> Email</label >
-                  <input className="textInput"  type="text" id="email" name="email" onChange={setEmail}></input>
+                  <input className="textInput" type="text" id="email" name="email" onChange={setEmail}></input>
                   <label className="label1" for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                  <input className="textInput"  type="text" id="adr" name="address" onChange={setAddress}></input>
+                  <input className="textInput" type="text" id="adr" name="address" onChange={setAddress}></input>
                   <label className="label1" for="city"><i class="fa fa-institution"></i> City</label>
-                  <input className="textInput"  type="text" id="city" name="city" onChange={setCity}></input>
+                  <input className="textInput" type="text" id="city" name="city" onChange={setCity}></input>
 
                 </div>
 
@@ -114,12 +116,12 @@ function PaymentPage() {
                     <i class="fa fa-cc-discover" style={{ color: "orange" }}></i>
                   </div>
                   <label className="label1" for="cname">Name on Card</label>
-                  <input className="textInput"  type="text" id="cname" name="cardname"></input>
+                  <input className="textInput" type="text" id="cname" name="cardname"></input>
                   <label className="label1" for="ccnum">Credit card number</label>
-                  <input className="textInput"  type="text" id="ccnum" name="cardnumber"></input>
+                  <input className="textInput" type="text" id="ccnum" name="cardnumber"></input>
                 </div>
               </div>
-              <input className="textInput"  type="submit" value="Make order" class="btnCheckOut" onClick={submitFun}></input>
+              <input className="textInput" type="submit" value="Make order" class="btnCheckOut" onClick={submitFun}></input>
             </form>
           </div>
         </div>

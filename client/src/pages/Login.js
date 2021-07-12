@@ -22,6 +22,7 @@ import {
 import { RegisterButton } from './NavButtons';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import Header from "./Header";
 
 // const submitValue = () => {
 //   const details = {
@@ -84,10 +85,13 @@ export default function Login() {
         console.log(res);
         sessionStorage.setItem('loggedIn', 'true');
         history.push('/profile');
+        window.location.reload();
       }
     }).catch(e =>
       console.error(e)
     );
+
+    
   };
   // const getUserInfo = () => {
   //   axios.get('/api/users/profile').then((res) => {
@@ -110,6 +114,7 @@ export default function Login() {
   }
 
   return (
+    <React.Fragment>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -163,6 +168,7 @@ export default function Login() {
       <Box mt={8}>
       </Box>
     </Container>
+    </React.Fragment>
   );
 }
 

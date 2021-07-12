@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useContext, useStyles, useState }from 'react';
 import { useHistory } from "react-router-dom";
 import '../styles/style.css';
 import Grid from '@material-ui/core/Grid';
 import shoppingcart from '../images/shopping-cart.png';
-import extrema from '../images/extrema.png';
-
-import airbaloon from '../images/air-baloon.jpg';
-import { handleBtns } from './Adventures';
 import '../styles/inventory.css';
 import axios from 'axios';
+
+
 
 const HomeButton = () => {
     let history = useHistory();
@@ -106,16 +104,19 @@ const InfoRouterButton = (props) => {
 const LogoutButton = () => {
     let history = useHistory();
     const handleCLick = () => {
-
-        axios.post('api/users/logout').then((res)=>{
+        axios.post('api/users/logout').then(()=>{
             sessionStorage.setItem('loggedIn', 'false');
             sessionStorage.removeItem('user');
         });
         history.push("/login");
+        window.location.reload();
+        
 
     }
     return (
+        <React.Fragment>
         <li onClick={handleCLick}><a>Log out</a></li>
+        </React.Fragment>
     )
 }
 
@@ -123,8 +124,10 @@ const AccountButton = () => {
     let history = useHistory();
 
     const handleCLick = () => {
+      
         if (sessionStorage.getItem('loggedIn') !== 'true') {
             history.push("/login");
+            window.location.reload();
         } else {
             history.push("/profile");
         }
@@ -132,7 +135,6 @@ const AccountButton = () => {
     return (
         <li onChange={handleCLick}> {!sessionStorage.getItem('loggedIn') ? <LoginButton /> : <LogoutButton/>}</li>
     );
-
 }
 
 const PaymentPageButton = (props) => {

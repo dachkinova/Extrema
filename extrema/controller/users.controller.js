@@ -56,7 +56,6 @@ exports.login = async (req, res) => {
 
 exports.logout = (req, res) => {
     res.cookie("access-token", {expires: Date.now()});
-    res.json("Successful log out");
 }
 
 exports.profile = (req, res) => {

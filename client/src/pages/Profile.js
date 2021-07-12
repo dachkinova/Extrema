@@ -46,8 +46,10 @@ function Profile() {
 
     return (
             <React.Fragment>
-                    <div>{data}</div>
-                    <button onClick={logout}>BUTON!!</button>
+                <br/><br/><br/>
+                    <div style={{ fontSize: "30px" }}>Welcome,</div> 
+                    <div style={{ fontSize: "30px" }}>{data}</div>
+                    
             </React.Fragment>
     );
 }

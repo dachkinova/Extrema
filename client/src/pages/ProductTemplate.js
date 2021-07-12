@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import '../styles/productTemplate.css';
 import $ from 'jquery'; 
 import axios from 'axios';
 import {useLocation} from "react-router-dom";
+
+import CartContext from "../../../client/src/store/cart-context";
 
 function ProductTemplate() {
     const location = useLocation();
@@ -107,6 +109,21 @@ function ProductTemplate() {
       const setRating = (e) => {
         setRat(e.target.value);
       }  
+      const cartCtx = useContext(CartContext);
+      const onAdd = () => {
+
+        if (sessionStorage.getItem('loggedIn') === 'true') {
+            cartCtx.addItem({
+                id: params.id,
+                title: params.name,
+                price: params.price
+            });
+            alert( params.name + " is added to your cart. Click cart to see your order status.")
+           
+        } else {
+            alert("You must log in before making an order.")
+        }
+    }
 
     return (
         <body>
@@ -148,7 +165,7 @@ function ProductTemplate() {
                     <div className="description"><b>Tour Duration:</b> {params.tourDurartion}<br/><br/>
                     <b>Included:</b> <p>{params.included}</p><br/><br/>
                     <b>Program:</b> <p>{params.program}</p></div>
-                    <button type="submit" form="nameform" value="Submit" className="bookButton">Book now</button>
+                    <button type="submit" form="nameform" value="Submit" className="bookButton" onClick={onAdd}>Book now</button>
                     </div>
                     </section>
                 <p className="additionalInfo">Additional information</p>

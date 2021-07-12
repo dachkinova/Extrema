@@ -11,6 +11,13 @@ import gift from '../images/gift.png';
 
 function Contacts() {
     return (
+      <React.Fragment>
+      <div class="about-section">
+          <h1>Contact us</h1>
+          <p>You can find our office on the given location.</p>
+          <p></p>
+        </div>
+        <br/><br/>
         <div class="mapouter">
           <div class="gmap_canvas"><iframe width="845" height="500" id="gmap_canvas"
               src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=11&ie=UTF8&iwloc=&output=embed"
@@ -19,6 +26,7 @@ function Contacts() {
             <a href="https://www.embedgooglemap.net"></a>
           </div>
         </div>
+        </React.Fragment>
     );
 }
 
